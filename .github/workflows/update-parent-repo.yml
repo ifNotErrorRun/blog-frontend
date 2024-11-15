@@ -13,7 +13,7 @@ jobs:
           submodules: recursive
       - name: Merge submodule updates
         run: |
-          git submodule update --remote --merge
+          git submodule update --remote --merge --allow-unrelated-histories
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git commit -am "Auto-update submodules" || true
