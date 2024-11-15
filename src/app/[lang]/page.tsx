@@ -14,7 +14,7 @@ export default async function Home({ params: { lang } }: Props) {
 
   return (
     <>
-      <TypographyH1>{t.global.title}</TypographyH1>
+      <TypographyH1>{t.global.title}test1</TypographyH1>
       {/* <MessageEventContainer /> */}
     </>
   );
