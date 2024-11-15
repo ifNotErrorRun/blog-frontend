@@ -11,10 +11,11 @@ jobs:
           repository: ifNotErrorRun/blog
           token: ${{ secrets.PAT }}
           submodules: recursive
-      - name: Update Submodule
+      - name: Merge submodule updates
         run: |
           git submodule update --remote --merge
-          git config user.name "chanho.kim"
-          git config user.email "kiss.yagni.dry@gmail.com"
-          git commit -am "서브모듈 자동 업데이트"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git commit -am "Auto-update submodules" || true
           git push
+        shell: bash
