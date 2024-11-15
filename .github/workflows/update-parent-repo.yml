@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: owner/parent-repo
+          repository: ifNotErrorRun/blog
           token: ${{ secrets.PAT }}
           submodules: recursive
       - name: Update Submodule
