@@ -2,20 +2,33 @@ name: Update Parent Repository
 on:
   push:
     branches: [ main ]
+
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           repository: ifNotErrorRun/blog
           token: ${{ secrets.PAT }}
-          submodules: recursive
-      - name: Merge submodule updates
+          submodules: true
+          fetch-depth: 0
+      
+      - name: Setup Git Config
         run: |
-          git submodule update --remote --merge --allow-unrelated-histories
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git commit -am "Auto-update submodules" || true
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Update and Merge Submodules
+        run: |
+          git submodule sync
+          git submodule update --init --recursive
+          git submodule update --remote --merge
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git add .
+          git commit -m "Auto-update submodules ($(date +%Y-%m-%d))" || true
           git push
         shell: bash
