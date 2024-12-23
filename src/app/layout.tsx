@@ -6,11 +6,11 @@ import { ThemeProvider } from "@/shared/config/providers/ThemeProvider";
 import { cn } from "@/shared/utils/shadcn-utils";
 import "@/shared/config/styles/globals.css";
 
-interface RootLayoutProps {
+export default async function RootLayout({
+  children,
+}: {
   children: React.ReactNode;
-}
-
-export default async function RootLayout({ children }: RootLayoutProps) {
+}) {
   return (
     <>
       <html suppressHydrationWarning>

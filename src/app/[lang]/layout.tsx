@@ -14,15 +14,16 @@ import TypographyH3 from "@/shared/components/atom/TypographyH3";
 import ThemeToggle from "@/shared/components/atom/ThemeToggle";
 import LangToggle from "@/shared/components/atom/LangToggle";
 
-interface Props {
-  params: { lang: string };
-  children: React.ReactNode;
-}
+type Params = Promise<{ lang: string }>;
 
 export default async function MainLayout({
-  params: { lang },
+  params,
   children,
-}: Props) {
+}: {
+  params: Params;
+  children: React.ReactNode;
+}) {
+  const { lang } = await params;
   const t = await getDictionary(lang);
 
   return (
