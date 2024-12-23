@@ -1,19 +1,33 @@
-import type { Metadata } from "next";
-import "./globals.css";
+"use server";
 
-export const metadata: Metadata = {
-  title: "Chanho.dev",
-  description: "Dev.blog by Chanho Kim",
-};
+// import { Analytics } from "@vercel/analytics/react";
+// import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "@/shared/config/providers/ThemeProvider";
+import { cn } from "@/shared/utils/shadcn-utils";
+import "@/shared/config/styles/globals.css";
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+export default async function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="ja">
-      <body>{children}</body>
-    </html>
+    <>
+      <html suppressHydrationWarning>
+        <head />
+        <body className={cn(`min-h-screen bg-background antialiased`)}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            {/* <SpeedInsights />
+            <Analytics /> */}
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
   );
 }

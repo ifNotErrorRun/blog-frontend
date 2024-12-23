@@ -1,0 +1,12 @@
+{
+  "global": {
+    "title": "log.info(knowledge)",
+    "description": "Chanho.dev ブログ",
+    "home": "ホーム",
+    "about": "ご紹介",
+    "articles": "記事一覧",
+    "series": "シリーズ",
+    "tags": "タグ",
+    "resume": "履歴書"
+  }
+}

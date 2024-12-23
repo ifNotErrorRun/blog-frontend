@@ -1,0 +1,12 @@
+{
+  "global": {
+    "title": "log.info(knowledge)",
+    "description": "Chanho.dev blog",
+    "home": "Home",
+    "about": "About",
+    "articles": "Articles",
+    "series": "Series",
+    "tags": "Tags",
+    "resume": "Resume"
+  }
+}
