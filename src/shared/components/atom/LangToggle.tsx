@@ -26,8 +26,6 @@ const LangToggle = () => {
 
   const getFlag = (lang: string) => {
     switch (lang) {
-      case "en":
-        return engIcon;
       case "jp":
         return jpnIcon;
       case "ko":
@@ -46,15 +44,6 @@ const LangToggle = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setLang("en")}>
-          <Image
-            src={engIcon}
-            alt="United State flag"
-            width={30}
-            className="me-2"
-          />
-          <p>English</p>
-        </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setLang("jp")}>
           <Image src={jpnIcon} alt="Japan flag" width={30} className="me-2" />
           <p>日本語</p>
